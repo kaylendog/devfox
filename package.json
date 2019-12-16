@@ -1,22 +1,46 @@
 {
-	"name": "eslint-config",
+	"name": "webpack-eslint-config",
 	"version": "1.0.0",
 	"license": "MIT",
 	"scripts": {
-		"build:watch": "tsc --project ./tsconfig.json --watch",
-		"build": "tsc --project ./tsconfig.json && eslint src/**/*.*",
-		"dev": "tsc --project ./tsconfig.json && pm2 start ecosystem.config.js && pm2 logs",
-		"lint": "eslint src/**/*.*",
-		"dev:stop": "pm2 stop all && pm2 delete all"
+		"start": "webpack-dev-server --progress --mode development --config ./webpack/webpack.config.dev.js",
+		"build": "webpack --progress --mode production --config ./webpack/webpack.config.prod.js"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.7.5",
+		"@babel/plugin-syntax-dynamic-import": "^7.7.4",
+		"@babel/plugin-transform-modules-commonjs": "^7.7.5",
+		"@babel/preset-react": "^7.7.4",
+		"@types/node": "^12.12.17",
+		"@types/react": "^16.9.16",
+		"@types/react-dom": "^16.9.4",
 		"@typescript-eslint/eslint-plugin": "^2.12.0",
 		"@typescript-eslint/parser": "^2.12.0",
+		"awesome-typescript-loader": "^5.2.1",
+		"babel-core": "^6.26.3",
+		"clean-webpack-plugin": "^3.0.0",
+		"css-loader": "^3.2.0",
 		"eslint": "^6.7.2",
 		"eslint-config-prettier": "^6.7.0",
-		"pm2": "^4.2.1",
+		"eslint-plugin-react": "^7.17.0",
+		"file-loader": "^5.0.2",
+		"html-webpack-plugin": "^3.2.0",
+		"less": "^3.10.3",
+		"less-loader": "^5.0.0",
+		"mini-css-extract-plugin": "^0.8.0",
+		"optimize-css-assets-webpack-plugin": "^5.0.3",
 		"prettier": "^1.19.1",
-		"ts-node": "^8.5.4",
-		"typescript": "^3.7.3"
+		"style-loader": "^1.0.1",
+		"terser-webpack-plugin": "^2.2.1",
+		"typescript": "^3.7.3",
+		"url-loader": "^3.0.0",
+		"webpack": "^4.41.2",
+		"webpack-bundle-analyzer": "^3.6.0",
+		"webpack-cli": "^3.3.10",
+		"webpack-dev-server": "^3.9.0"
+	},
+	"dependencies": {
+		"react": "^16.12.0",
+		"react-dom": "^16.12.0"
 	}
 }

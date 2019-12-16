@@ -1,2 +1,4 @@
-ecosystem.config.js
+# Files for eslint to ignore
+dist/
+webpack/
 node_modules/
