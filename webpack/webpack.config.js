@@ -5,10 +5,15 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CheckerPlugin } = require("awesome-typescript-loader");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
+if (process.env.NODE_ENV === undefined) {
+	console.log("\n'NODE_ENV' is undefined - falling back to 'development'.\n");
+	process.env.NODE_ENV = "development";
+}
+
 module.exports = {
 	context: resolve(__dirname, "../src"),
 	entry: {
-		main: "./index.tsx",
+		main: ["./index.tsx"],
 	},
 	output: {
 		filename: "[hash].js",
@@ -36,6 +41,7 @@ module.exports = {
 								plugins: [
 									"@babel/plugin-syntax-dynamic-import",
 									"@babel/plugin-transform-modules-commonjs",
+									"react-hot-loader/babel",
 								],
 							},
 							babelCore: "@babel/core",
@@ -90,9 +96,8 @@ module.exports = {
 
 module.exports.plugins = [
 	new HtmlWebpackPlugin({
-		template: resolve(__dirname, "../src/index.html"),
-		title: "fursonar",
-		inject: "body",
+		template: resolve(__dirname, "../src/public/index.html"),
+		title: "webpack-eslint-config",
 		filename: resolve(__dirname, "../dist/index.html"),
 	}),
 

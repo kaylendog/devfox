@@ -14,5 +14,10 @@
 		"prettier",
 		"prettier/@typescript-eslint",
 		"plugin:react/recommended"
-	]
+	],
+	"rules": {
+		"@typescript-eslint/explicit-function-return-type": {
+			"allowExpressions": true
+		}
+	}
 }

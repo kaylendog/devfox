@@ -24,7 +24,7 @@ const productionConfig = {
 			},
 		},
 		minimize: true,
-		minimizer: [new TerserPlugin({ extractComments: false })],
+		minimizer: [new TerserPlugin({ extractComments: true })],
 	},
 
 	plugins: sharedWebpackConfig.plugins.concat(productionPlugins),
