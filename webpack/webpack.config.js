@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === undefined) {
 module.exports = {
   context: resolve(__dirname, '../src'),
   entry: {
-    main: ['./index.tsx'],
+    main: './index.tsx',
   },
   output: {
     filename: '[hash].js',
@@ -21,12 +21,26 @@ module.exports = {
     chunkFilename: '[contenthash].js',
     publicPath: '/',
   },
+
   resolve: {
     alias: {
       assets: resolve(__dirname, '../src/assets/'),
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: resolve(__dirname, '../src/public/index.html'),
+      title: 'webpack-eslint-config',
+      filename: resolve(__dirname, '../dist/index.html'),
+    }),
+
+    new webpack.DefinePlugin(require('./env')),
+    new CheckerPlugin(),
+    new webpack.NamedModulesPlugin(),
+  ],
+
   module: {
     rules: [
       {
@@ -77,20 +91,4 @@ module.exports = {
       },
     ],
   },
-
-  devtool: 'eval-source-map',
 };
-
-module.exports.plugins = [
-  new HtmlWebpackPlugin({
-    template: resolve(__dirname, '../src/public/index.html'),
-    title: 'webpack-eslint-config',
-    filename: resolve(__dirname, '../dist/index.html'),
-  }),
-
-  new webpack.DefinePlugin(require('./env')),
-
-  new CheckerPlugin(),
-
-  new webpack.NamedModulesPlugin(),
-];

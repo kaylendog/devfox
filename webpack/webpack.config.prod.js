@@ -1,18 +1,12 @@
+process.env.NODE_ENV = 'production';
+
 const webpack = require('webpack'),
   TerserPlugin = require('terser-webpack-plugin'),
   OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
-  MiniCssExtractPlugin = require('mini-css-extract-plugin');
+  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+  merge = require('webpack-merge');
 
 const sharedWebpackConfig = require('./webpack.config');
-
-const productionPlugins = [
-  new webpack.optimize.AggressiveMergingPlugin(),
-  new OptimizeCssAssetsPlugin(),
-  new MiniCssExtractPlugin({
-    filename: '[hash].css',
-    chunkFilename: '[contenthash].css',
-  }),
-];
 
 const productionConfig = {
   mode: 'production',
@@ -32,7 +26,14 @@ const productionConfig = {
     minimizer: [new TerserPlugin({ extractComments: true })],
   },
 
-  plugins: sharedWebpackConfig.plugins.concat(productionPlugins),
+  plugins: [
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new OptimizeCssAssetsPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[hash].css',
+      chunkFilename: '[contenthash].css',
+    }),
+  ],
 };
 
-module.exports = Object.assign({}, sharedWebpackConfig, productionConfig);
+module.exports = merge.smart(sharedWebpackConfig, productionConfig);
