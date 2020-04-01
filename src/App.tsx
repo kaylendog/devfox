@@ -1,9 +1,9 @@
-import * as React from "react";
-import { hot } from "react-hot-loader/root";
+import * as React from 'react';
+import { hot } from 'react-hot-loader/root';
 
-import "./index.less";
+import './index.less';
 
-console.log("owo");
+console.log('owo');
 
 const App = () => <div>Hello World!</div>;
 

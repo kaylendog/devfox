@@ -1,6 +1,6 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
-import { AppWithHMR } from "./App";
+import { AppWithHMR } from './App';
 
-ReactDOM.render(<AppWithHMR />, document.querySelector("#app-mount"));
+ReactDOM.render(<AppWithHMR />, document.querySelector('#app-mount'));
