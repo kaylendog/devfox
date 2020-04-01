@@ -19,9 +19,9 @@ const developmentConfig = {
 
   plugins: [
     new webpack.NamedModulesPlugin(),
-    new BundleAnalyzerPlugin(),
+    // Change this to true to automatically open the analyzer.
+    new BundleAnalyzerPlugin({ openAnalyzer: false }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.AggressiveMergingPlugin(),
   ],
 };
 
