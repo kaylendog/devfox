@@ -1,9 +1,7 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 if (process.env.NODE_ENV === undefined) {
   console.log("\n'NODE_ENV' is undefined - falling back to 'development'.\n");
@@ -88,6 +86,10 @@ module.exports = {
       {
         test: /\.(png|webp|jpe?g|svg)$/,
         loader: 'file-loader',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: ['file-loader'],
       },
     ],
   },

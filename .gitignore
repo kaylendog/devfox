@@ -115,3 +115,5 @@ dist
 .pnp.*
 
 .awcache/
+
+.DS_Store
