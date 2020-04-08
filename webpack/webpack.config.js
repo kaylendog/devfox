@@ -30,7 +30,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: resolve(__dirname, '../src/public/index.html'),
-      title: 'webpack-eslint-config',
+      title: '-^^,--,~',
       filename: resolve(__dirname, '../dist/index.html'),
     }),
 
